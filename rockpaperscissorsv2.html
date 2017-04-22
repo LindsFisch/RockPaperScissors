@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2</title>
+</head>
+
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <p>Press r, p, or s to begin</p>
+  
+  <h3>User Choice: <span id ="user-guess"></span></h3>
+  <h3>Computer Choice: <span id ="comp-guess"></span></h3>
+
+  <h3>Wins: <span id="wins">0</span></h3>
+  <h3>Losses: <span id="losses">0</span></h3>
+  <h3>Ties: <span id="ties">0</span></h3>
+ 
+ <script type="text/javascript">
+   // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+      var options = ["r", "p", "s"];
+      var win = 0;
+      var lose = 0;
+      var tie = 0;
+
+      // This function is run whenever the user presses a key.
+      document.onkeyup = function(event) {
+
+        // Determines which key was pressed
+        var userGuess = event.key;
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+        var computerGuess = options[Math.floor(Math.random() * options.length)];
+        
+        
+      if (userGuess === "r" || userGuess === "s" || userGuess === "p"){
+        //Fills in User Choice
+        if (userGuess === "r") {
+           document.getElementById("user-guess").textContent = "rock";
+        } else if (userGuess === "s") {
+          document.getElementById("user-guess").textContent = "scissors";
+        } else {
+          document.getElementById("user-guess").textContent = "paper"
+        }
+        //Fills in Computer Choice
+        if (computerGuess === "r") {
+          document.getElementById("comp-guess").textContent = "rock";
+        } else if (computerGuess === "s") {
+          document.getElementById("comp-guess").textContent = "scissors";
+        } else {
+          document.getElementById("comp-guess").textContent = "paper";
+        }
+        //Comparison of different ways to win/lose/tie
+        if ((userGuess === "r" && computerGuess === "s") || (userGuess === "s" && computerGuess === "p") || (userGuess === "p" && computerGuess === "r")) {
+            win++;
+          } else if (userGuess === computerGuess) {
+            tie++;
+          } else {
+            lose++;
+          }
+       } else {
+        alert("Please choose r, s, or p");
+       }
+      //Fills in score          
+       document.getElementById("wins").textContent = win;
+       document.getElementById("losses").textContent = lose;
+       document.getElementById("ties").textContent = tie;
+       
+   };
+
+   
+ </script>
+
+  
+
+</body>
+
+</html>
